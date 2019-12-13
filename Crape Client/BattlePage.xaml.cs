@@ -1,5 +1,4 @@
-﻿using Panuon.UI.Silver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,18 +16,13 @@ using System.Windows.Shapes;
 namespace Crape_Client
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// BattlePage.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : WindowX
+    public partial class BattlePage : Page
     {
-        public MainWindow()
+        public BattlePage()
         {
             InitializeComponent();
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new BattlePage();
         }
     }
 }
