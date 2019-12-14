@@ -49,13 +49,13 @@
                           Background="Transparent" BorderThickness="0"
                           pu:ExpanderHelper.HeaderForeground="#FFF">
                     <StackPanel>
-                        <RadioButton Content="战役" Margin="0 5"
+                        <RadioButton Content="战役" Margin="0 5" GroupName="MainMenu"
                                      HorizontalContentAlignment="Left"
                                      Foreground="#FFF" Background="Transparent"
                                      pu:RadioButtonHelper.RadioButtonStyle="Button"
-                                     pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}" Checked="RadioButton_Checked"
+                                     pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}" Checked="Battle_Checked"
                                       />
-                        <RadioButton Content="遭遇战" Margin="0 5"
+                        <RadioButton Content="遭遇战" Margin="0 5" GroupName="MainMenu"
                                      HorizontalContentAlignment="Left"
                                      Foreground="#FFF" Background="Transparent"
                                      pu:RadioButtonHelper.RadioButtonStyle="Button"
@@ -67,13 +67,13 @@
                           Background="Transparent" BorderThickness="0"
                           pu:ExpanderHelper.HeaderForeground="#FFF">
                     <StackPanel>
-                        <RadioButton Content="局域网络" Margin="0 5"
+                        <RadioButton Content="局域网络" Margin="0 5" GroupName="MainMenu"
                                      HorizontalContentAlignment="Left"
                                      Foreground="#FFF" Background="Transparent"
                                      pu:RadioButtonHelper.RadioButtonStyle="Button"
                                      pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}"
                                       />
-                        <RadioButton Content="网际网络" Margin="0 5"
+                        <RadioButton Content="网际网络" Margin="0 5" GroupName="MainMenu"
                                      HorizontalContentAlignment="Left"
                                      Foreground="#FFF" Background="Transparent"
                                      pu:RadioButtonHelper.RadioButtonStyle="Button"
@@ -83,20 +83,20 @@
                 </Expander>
 
                 <RadioButton Content="存档管理" Padding="10,0,0,0" Margin="0 5"
-                             HorizontalContentAlignment="Left"
+                             HorizontalContentAlignment="Left" GroupName="MainMenu"
                              Foreground="#FFF" Background="Transparent"
                              pu:RadioButtonHelper.RadioButtonStyle="Button"
-                             pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}"/>
+                             pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}" Checked="SaveLoader_Checked"/>
                 <RadioButton Content="设置" Padding="10,0,0,0" Margin="0 5"
-                             HorizontalContentAlignment="Left"
+                             HorizontalContentAlignment="Left" GroupName="MainMenu"
                              Foreground="#FFF" Background="Transparent"
                              pu:RadioButtonHelper.RadioButtonStyle="Button"
-                             pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}"/>
+                             pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}" Checked="Setting_Checked"/>
                 <RadioButton Content="退出" Padding="10 0 0 0" Margin="0 5"
                              HorizontalContentAlignment="Left"
                              Foreground="#FFF" Background="Transparent"
                              pu:RadioButtonHelper.RadioButtonStyle="Button"
-                             pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}"/>
+                             pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}" Checked="Exit_Checked"/>
             </StackPanel>
         </Grid>
         <Frame x:Name="frame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
