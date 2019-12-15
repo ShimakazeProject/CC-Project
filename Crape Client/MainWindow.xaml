@@ -1,17 +1,17 @@
 ﻿<pu:WindowX x:Class="Crape_Client.MainWindow"
- xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
- xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
- xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
- xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
- xmlns:local="clr-namespace:Crape_Client"
- xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
- mc:Ignorable="d"
- Title="NavbarWindow"
- WindowStartupLocation="CenterScreen"
- Height="450"
- Width="800"
- BorderThickness="0"
- pu:WindowXCaption.Header=" ">
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Crape_Client"
+            xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            mc:Ignorable="d"
+            Title="NavbarWindow"
+            WindowStartupLocation="CenterScreen"
+            Height="600"
+            Width="1280"
+            BorderThickness="0"
+            pu:WindowXCaption.Header=" ">
     <pu:WindowX.Resources>
         <SolidColorBrush x:Key="ThemeColor" Color="#FF67DA82"/>
     </pu:WindowX.Resources>
@@ -59,11 +59,11 @@
                                      HorizontalContentAlignment="Left"
                                      Foreground="#FFF" Background="Transparent"
                                      pu:RadioButtonHelper.RadioButtonStyle="Button"
-                                     pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}"
+                                     pu:RadioButtonHelper.CheckedBackground="{DynamicResource ThemeColor}" Checked="RadioButton_Checked"
                                       />
                     </StackPanel>
                 </Expander>
-                <Expander Header="在线作战" Padding="10,0,0,0" Margin="0 5"
+                <Expander Header="在线作战" IsEnabled="False" Padding="10,0,0,0" Margin="0 5"
                           Background="Transparent" BorderThickness="0"
                           pu:ExpanderHelper.HeaderForeground="#FFF">
                     <StackPanel>

@@ -23,10 +23,12 @@ namespace Crape_Client.Configs
         public static Brush MWBG { get; set; }
         public static List<MissionList> Missions { get; set; }
         public static List<RendererJson> Graphics { get; set; }
+        public static List<SideJson> Sides { get; set; }
         static GameConfigs()
         {
             Missions = new List<MissionList>();
             Graphics = new List<RendererJson>();
+            Sides = new List<SideJson>();
             if (System.IO.File.Exists(inipath))
             {
 

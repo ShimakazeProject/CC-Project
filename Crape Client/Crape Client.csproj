@@ -73,6 +73,9 @@
     <Compile Include="Configs\Ra2md\Video.cs" />
     <Compile Include="LogMgr\Logger.cs" />
     <Compile Include="LogMgr\LogRank.cs" />
+    <Compile Include="SkirmishPage.xaml.cs">
+      <DependentUpon>SkirmishPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\IniIO.cs" />
     <Compile Include="Tools\MissionList.cs" />
     <Compile Include="SaveLoaderPage.xaml.cs">
@@ -82,6 +85,8 @@
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\RendererJson.cs" />
+    <Compile Include="Tools\SideJson.cs" />
+    <Compile Include="Tools\String2Int.cs" />
     <Page Include="BattlePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SkirmishPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,6 +146,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="48564472_p0.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

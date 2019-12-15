@@ -26,27 +26,7 @@ namespace Crape_Client
         public SettingPage()
         {
             InitializeComponent();
-            Initializing();
             DataContext = this;
-        }
-        private bool Initializing()
-        {
-            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Resource\GraphicsAPIs.json"))
-                return false;
-
-
-            var text = File.ReadAllText(@"Resource\GraphicsAPIs.json");
-            text=Regex.Replace(text, @"\/\*.+?\*\/|\/\/.+?\n", string.Empty);
-            JsonArray renderers = (JsonArray)JsonValue.Parse(text);
-            List<JsonValue> rendererList = renderers.ToList();
-            
-            foreach (JsonObject renderer in rendererList)
-            {
-                if (renderer.JsonType != JsonType.Object) throw new FormatException();
-                Crape_Client.Configs.GameConfigs.Graphics.Add(new Crape_Client.Tools.RendererJson(renderer));
-                //apis.Items.Add(new RendererJson(renderer));
-            }
-            return true;
         }
         private void DDrawSet(object sender, RoutedEventArgs e)
         {

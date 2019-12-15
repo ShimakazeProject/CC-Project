@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Json;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -20,6 +22,8 @@ namespace Crape_Client
         public static LogMgr.Logger Logger = new LogMgr.Logger("Crape Client");
         public App()
         {
+            RendererInit();
+            SideInit();
             MessageBoxX.MessageBoxXConfigurations.Add("InfoTheme", new Panuon.UI.Silver.Core.MessageBoxXConfigurations()
             {
                 MessageBoxStyle = MessageBoxStyle.Modern,
@@ -46,6 +50,62 @@ namespace Crape_Client
                 MessageBoxIcon = MessageBoxIcon.None,
             });
             Logger.WriteLine(LogMgr.LogRank.INFO, "初始化完成 Crape Client正常工作中");
+        }
+
+        private bool RendererInit()
+        {
+            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Resource\GraphicsAPIs.json"))
+                return false;
+            var text = File.ReadAllText(@"Resource\GraphicsAPIs.json");
+            text = System.Text.RegularExpressions.Regex.Replace(text, @"\/\*.+?\*\/|\/\/.+?\n", string.Empty);
+            JsonArray renderers = (JsonArray)JsonValue.Parse(text);
+            List<JsonValue> rendererList = renderers.ToList();
+
+            foreach (JsonObject renderer in rendererList)
+            {
+                if (renderer.JsonType != JsonType.Object) throw new FormatException();
+                Crape_Client.Configs.GameConfigs.Graphics.Add(new Crape_Client.Tools.RendererJson(renderer));
+                //apis.Items.Add(new RendererJson(renderer));
+            }
+            return true;
+        }
+        private bool SideInit()
+        {
+            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Resource\Side.json"))
+                return false;
+            var text = File.ReadAllText(@"Resource\Side.json");
+            text = System.Text.RegularExpressions.Regex.Replace(text, @"\/\*.+?\*\/|\/\/.+?\n", string.Empty);
+            JsonArray side = (JsonArray)JsonValue.Parse(text);
+            List<JsonValue> sideList = side.ToList();
+            Crape_Client.Configs.GameConfigs.Sides.Add(new Tools.SideJson("随机", "#FFFFFF"));
+            for (int i = 0; i < sideList.Count; i++)
+            {
+                var item = (JsonObject)sideList[i];
+                item.TryGetValue("Side", out JsonValue sideName);
+                item.TryGetValue("Image", out JsonValue imgjv);
+                item.TryGetValue("Color", out JsonValue clr);
+                string img = imgjv;
+                Crape_Client.Configs.GameConfigs.Sides.Add(new Tools.SideJson($"随机 {sideName.ToString()}", clr,
+                    $"{AppDomain.CurrentDomain.BaseDirectory}Resource\\Image\\{img}"));
+            }
+
+            foreach (JsonObject item in sideList)
+            {
+                if (item.JsonType != JsonType.Object) throw new FormatException();
+                item.TryGetValue("Image", out JsonValue imgjv);
+                item.TryGetValue("Color", out JsonValue clr);
+                item.TryGetValue("Country", out JsonValue countrys);
+                string img = imgjv;
+                foreach (var name in countrys as JsonArray)
+                {
+                    Crape_Client.Configs.GameConfigs.Sides.Add(
+                        new Crape_Client.Tools.SideJson(
+                            name,
+                            clr,
+                            $"{AppDomain.CurrentDomain.BaseDirectory}Resource\\Image\\{img}"));
+                }
+            }
+            return true;
         }
         /// <summary>
         /// 运行游戏

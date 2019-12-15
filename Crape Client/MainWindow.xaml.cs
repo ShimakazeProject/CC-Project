@@ -56,5 +56,10 @@ namespace Crape_Client
         {
             frame.Content = new SaveLoaderPage();
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            frame.Content = new SkirmishPage();
+        }
     }
 }
